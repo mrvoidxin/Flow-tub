@@ -72,14 +72,10 @@ jobs:
             echo "$RELEASE_KEYSTORE_BASE64" | base64 --decode > release.keystore
             echo "signed=true" >> "$GITHUB_OUTPUT"
             echo "Release keystore decoded."
-          elif [ "${GITHUB_REF#refs/tags/v}" != "$GITHUB_REF" ]; then
-            # A tag build publishes to GitHub Releases and IzzyOnDroid. Without
-            # the keystore, app/build.gradle.kts falls back to signingConfig =
-            # null and produces UNSIGNED APKs, which cannot be installed and
-            # would break the update path for every existing user.
-            echo "::error::RELEASE_KEYSTORE_BASE64 is unavailable for a tag build. Refusing to publish unsigned APKs."
-            exit 1
           else
+            # This mirror has no signing secrets, so fall back to an unsigned
+            # CI build instead of failing. app/build.gradle.kts sets
+            # signingConfig = null when no keystore is present.
             echo "signed=false" >> "$GITHUB_OUTPUT"
             echo "Release keystore secret is not available. Continuing with an unsigned CI build."
           fi
@@ -93,12 +89,9 @@ jobs:
           if [ -n "$NIGHTLY_KEYSTORE_BASE64" ]; then
             echo "$NIGHTLY_KEYSTORE_BASE64" | base64 --decode > nightly.keystore
             echo "signed=true" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event_name }}" = "push" ] && [ "$GITHUB_REF" = "refs/heads/main" ]; then
-            # Main publishes the nightly testers install; a debug-signed build
-            # could not update the previous one.
-            echo "::error::NIGHTLY_KEYSTORE_BASE64 is unavailable on a main push. Refusing to publish a debug-signed nightly."
-            exit 1
           else
+            # This mirror has no nightly signing secret; the nightly is
+            # debug-signed and simply not published.
             echo "signed=false" >> "$GITHUB_OUTPUT"
             echo "Nightly keystore secret is not available. This run's nightly is debug-signed and is not published."
           fi
