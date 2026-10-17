@@ -1,8 +1,6 @@
-# Flow v2.2.1
+# Flow Tube v1.0.0
 
-**Release date:** 2026-08-28
-
-Enjoying Flow? Consider supporting its development on [Patreon](https://patreon.com/A_EDev) to help keep the app free, open source, ad-free, and improving!
+**Release date:** 2026-10-16
 
 ## New features
 

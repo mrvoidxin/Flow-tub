@@ -17,8 +17,8 @@ Always update to the newest release before reporting a security issue.
 **Do not report security vulnerabilities through public GitHub issues.**
 
 Report privately through
-[GitHub Security Advisories](https://github.com/Flow-Tube/Flow/security/advisories/new).
-If you cannot use that form, email <contact@flow-tube.org>.
+[GitHub Security Advisories](https://github.com/mrvoidxin/Flow-tub/security/advisories/new).
+If you cannot use that form, email <flowtube.support@gmail.com>.
 
 Please include:
 
@@ -35,7 +35,7 @@ Please do not disclose the issue publicly until a fix has shipped.
 
 ## Verifying release APKs
 
-Official Flow builds are signed with a single release key. Any APK that does
+Official Flow Tube builds are signed with a single release key. Any APK that does
 not match the fingerprint below is not an official build, regardless of where
 it was downloaded.
 
@@ -53,6 +53,6 @@ The reported `Signer #1 certificate SHA-256 digest` must equal the fingerprint
 above (lower case, without colons).
 
 Official distribution channels are the
-[GitHub Releases page](https://github.com/Flow-Tube/Flow/releases) and
-[IzzyOnDroid](https://apt.izzysoft.de/packages/io.github.aedev.flow). Builds
+[GitHub Releases page](https://github.com/mrvoidxin/Flow-tub/releases) and
+[IzzyOnDroid](https://apt.izzysoft.de/packages/com.flowtube.app). Builds
 obtained anywhere else are unverified.

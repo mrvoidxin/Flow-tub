@@ -1,11 +1,11 @@
-# Contributing to Flow
+# Contributing to Flow Tube
 
-Thank you for your interest in contributing to Flow! We welcome contributions from the community.
+Thank you for your interest in contributing to Flow Tube! We welcome contributions from the community.
 
-Flow (`io.github.aedev.flow`) is an Android music/video app written in Kotlin with Jetpack Compose,
+Flow Tube (`com.flowtube.app`) is an Android music/video app written in Kotlin with Jetpack Compose,
 Hilt, and Media3/ExoPlayer. It plays YouTube content via a native InnerTube client with a
 NewPipe-based fallback extraction path, and supports local media playback, offline downloads,
-casting, lyrics, device-to-device sync, and an on-device recommendation engine (FlowNeuroEngine).
+casting, lyrics, device-to-device sync, and an on-device recommendation engine (FlowTubeEngine).
 
 **Read this file before opening a pull request.** Most review round-trips on this project come from
 one of the rules below, not from the feature itself. `AGENTS.md` in the repository root carries the
@@ -14,7 +14,7 @@ AI assistant, point it at `AGENTS.md`.
 
 ## ❓ Asking Questions About the Codebase
 
-**Use [GitHub Discussions](https://github.com/Flow-Tube/Flow/discussions) — that is the right place, and
+**Use [GitHub Discussions](https://github.com/mrvoidxin/Flow-tub/discussions) — that is the right place, and
 questions are welcome.** The codebase is deliberately light on comments (see "Comments" below), so
 asking is expected rather than a sign you missed something.
 
@@ -55,11 +55,11 @@ Feature suggestions are welcome! Please:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/Flow.git
-cd Flow
+git clone https://github.com/YOUR_USERNAME/Flow-tub.git
+cd Flow-tub
 
 # Add upstream remote
-git remote add upstream https://github.com/Flow-Tube/Flow.git
+git remote add upstream https://github.com/mrvoidxin/Flow-tub.git
 
 # Create a feature branch
 git checkout -b feature/your-feature-name
@@ -69,7 +69,7 @@ Always pull the latest `main` before starting work, to minimize merge conflicts.
 
 ### Product Flavors
 
-Flow builds two flavors: `github` (default, in-app updater enabled) and `foss` (no updater).
+Flow Tube builds two flavors: `github` (default, in-app updater enabled) and `foss` (no updater).
 **Always use flavor-prefixed Gradle tasks** — `assembleGithubDebug`, `compileFossDebugKotlin` —
 never bare `assembleDebug` or `compileDebugKotlin`.
 
@@ -195,7 +195,7 @@ than one feature uses it, and duplicate no behaviour the library already provide
 
 ## ⚡ Performance, Battery, and Thermals — Non-Negotiable
 
-Flow is a media player that runs for hours at a time. Jank, dropped frames, playback stutter, device
+Flow Tube is a media player that runs for hours at a time. Jank, dropped frames, playback stutter, device
 heat, and battery drain are **critical bugs, not cosmetic issues**. Every rule below is anchored in a
 real shipped regression that had to be found and fixed on-device.
 
@@ -264,7 +264,7 @@ real shipped regression that had to be found and fixed on-device.
 13. Sustained heat while the app is open = per-frame work; drain with the screen off = CPU/network
     loops. Diagnose in that order: (a) run the rule-2 audit over every composed-but-hidden tree;
     (b) count fetches per user action in logcat — any unexplained second fetch is the bug;
-    (c) check `adb shell dumpsys gfxinfo io.github.aedev.flow` for continuous frame production while
+    (c) check `adb shell dumpsys gfxinfo com.flowtube.app` for continuous frame production while
     the UI should be idle; (d) only then suspect the player path. Do not "fix" heat by degrading
     visible design, motion, or update smoothness — find the invisible work instead.
 
@@ -407,7 +407,7 @@ empty/error states, badges, formatters, or a second copy of a `shared/` componen
 
 ### Dependency injection
 
-Flow uses Hilt, but some legacy app-owned classes are still reached through static `getInstance()`
+Flow Tube uses Hilt, but some legacy app-owned classes are still reached through static `getInstance()`
 calls. Treat those as migration debt, not as a pattern to copy.
 
 1. **Use constructor injection by default** for new ViewModels, repositories, use cases, workers,
@@ -564,31 +564,28 @@ bump takes three times as long to review and is three times as likely to be reve
 
 ## 🔐 Release and Signing Invariants
 
-Flow is distributed through GitHub Releases and
-[IzzyOnDroid](https://apt.izzysoft.de/packages/io.github.aedev.flow). Both pin properties of the
-published artifacts, so the following are hard constraints. Breaking one of them cannot be fixed by a
-follow-up release — it forces every installed user to uninstall and reinstall, losing their local
-data.
+Flow Tube is distributed through GitHub Releases. The published artifacts are pinned by their
+version and by the signing key, so the following are hard constraints. Breaking one of them cannot
+be fixed by a follow-up release — it forces every installed user to uninstall and reinstall, losing
+their local data.
 
-**The signing key never changes.** Every release APK must be signed with the official key,
-certificate SHA-256 `4322294ed4caa2d4294140095818080ffe8acc1fbe3cdc76107df45c5286be40`. Android
-refuses to install an update signed by a different key. CI enforces this in the
-`Verify release signing certificate` step, which fails the build on a mismatch. Never regenerate
-`release.keystore`, and never rotate the `RELEASE_KEYSTORE_BASE64`, `STORE_PASSWORD`, `KEY_ALIAS`, or
-`KEY_PASSWORD` repository secrets.
+**The signing key never changes.** Every release APK must be signed with the same key, so an update
+installs over the previous version. Android refuses to install an update signed by a different key.
+CI signs with the `RELEASE_KEYSTORE_BASE64` / `STORE_PASSWORD` / `KEY_ALIAS` / `KEY_PASSWORD`
+repository secrets when they are set, and otherwise generates a throwaway key. Configure the four
+secrets for real releases; never rotate them once a release is published.
 
-**Release asset file names are a public contract.** IzzyOnDroid matches release assets by file name.
-`flow.apk` and `flow-foss.apk` are the universal builds and must keep those exact names. The per-ABI
-APKs are published alongside them as extras. Renaming or removing either universal APK silently
-breaks the IzzyOnDroid update feed, so coordinate with IzzyOnDroid before changing them.
+**Release asset file names.** Releases publish three APKs — `FlowTube-<version>-universal.apk`,
+`FlowTube-<version>-arm64-v8a.apk`, and `FlowTube-<version>-armeabi-v7a.apk`. The in-app updater
+matches assets by ABI token rather than by a fixed prefix, so keep the ABI token in the name.
 
 **`versionCode` must increase on every release.** F-Droid-format repositories use it to detect
-updates. The ABI splits all share one `versionCode`, so the universal APK is the only artifact
-IzzyOnDroid should consume.
+updates. The ABI splits all share one `versionCode`, so the universal APK is the only artifact such
+a repository should consume.
 
 **A tag build must never publish unsigned APKs.** `app/build.gradle.kts` falls back to
-`signingConfig = null` when no keystore is present, which produces uninstallable APKs. CI hard-fails
-a `v*` tag build when the keystore secret is missing rather than publishing them.
+`signingConfig = null` when no keystore is present, which produces uninstallable APKs. Supply a
+keystore (or let CI generate one) for `v*` tag builds.
 
 ## 🎯 Areas We Need Help
 
@@ -597,7 +594,7 @@ a `v*` tag build when the keystore secret is missing rather than publishing them
 - [ ] Performance optimization
 - [ ] Bug fixes
 - [ ] Accessibility features
-- [ ] Translations (via [Weblate](https://hosted.weblate.org/engage/flow/), not by editing
+- [ ] Translations (via a translation platform, not by editing
       locale files directly)
 
 ## 📜 Code of Conduct
@@ -610,14 +607,14 @@ a `v*` tag build when the keystore secret is missing rather than publishing them
 
 ## ❓ Questions?
 
-- Open a [discussion](https://github.com/Flow-Tube/Flow/discussions) — including questions about how the
+- Open a [discussion](https://github.com/mrvoidxin/Flow-tub/discussions) — including questions about how the
   codebase works
 - Comment on existing issues
 - Reach out to maintainers
 
 ## 🙏 Thank You!
 
-Every contribution helps make Flow better. Thank you for being part of the community!
+Every contribution helps make Flow Tube better. Thank you for being part of the community!
 
 ---
 

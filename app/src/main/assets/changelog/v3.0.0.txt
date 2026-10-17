@@ -1,4 +1,4 @@
-FLOW CHANGE LOG
+FLOW TUBE CHANGE LOG
 VERSION: 3.0.0
 DATE: 2026-09-15
 STATUS: PRE-RELEASE
@@ -24,7 +24,7 @@ NEW FEATURES
 - Daily Mixes cluster the artists you listen to together and open as full playlist pages you can play, shuffle and save
 - Endless music radio: similar songs are appended as the queue runs low, and the up-next list stays stable instead of changing every song
 - Tell the music engine what you don't want: "Not interested" softens an artist for two weeks, "Don't recommend" blocks them everywhere, both reversible
-- The Flow Control Center is now Your taste, rebuilt on the settings layout with your video and music taste, engine details, a Hidden from you page for everything you blocked, and profiles that sync between devices and export to a file
+- The Flow Tube Control Center is now Your taste, rebuilt on the settings layout with your video and music taste, engine details, a Hidden from you page for everything you blocked, and profiles that sync between devices and export to a file
 - Artist pages show your own history with that artist: play count, liked status, most-played tracks, and which "fans also like" artists are already in your rotation
 - New On Repeat home-screen widget puts the songs you keep replaying one tap away
 - The engine learns genres and moods from what you play, and keeps a private monthly listening ledger on your device — minutes, plays, discoveries and your listening clock — which never leaves the device
@@ -39,13 +39,13 @@ NEW FEATURES
 - Shorts run on the native InnerTube client with a rebuilt reel page and settings sheet, and a new feed engine that blends chains related to reels you liked, saved or watched with fresh discovery, exploration and subscriptions — endless, unrepeated and one reel per channel at a time
 - Shorts now honour your blocked channels and topics on every reel, "Don't show this channel" joins the reel sheet, and the ad creatives YouTube slips into the reel feed are dropped
 - Settings rebuilt on Material 3 Expressive: grouped rows, a search that finds any option, and a two-pane layout on tablets and foldables
-- Themes now match Flow Desktop, Monochrome gets a true black AMOLED style, and you can keep several named custom themes and move them between both apps with import and export
-- Flow Recap: a private, on-device record of your watching and listening, with a stats page of charts for any month, year or all time, covering your top channels, videos, artists, tracks and topics, streaks and your daily clock
+- Themes now match the desktop app, Monochrome gets a true black AMOLED style, and you can keep several named custom themes and move them between apps with import and export
+- Flow Tube Recap: a private, on-device record of your watching and listening, with a stats page of charts for any month, year or all time, covering your top channels, videos, artists, tracks and topics, streaks and your daily clock
 - A monthly and yearly Recap story that plays itself, with morphing Material shapes, artwork-tinted pages and channel and artist portraits, plus a shareable poster image
-- Onboarding rebuilt on Material 3 Expressive: a welcome step with the Flow logo, one morphing shape that follows you through every step, an alerts step that asks for notifications in context, imports grouped by the app you are moving from, and two panes on tablets and foldables
-- Updates now download, verify and install inside Flow from a new update page with sectioned release notes, the download size and a Skip this version option
+- Onboarding rebuilt on Material 3 Expressive: a welcome step with the Flow Tube logo, one morphing shape that follows you through every step, an alerts step that asks for notifications in context, imports grouped by the app you are moving from, and two panes on tablets and foldables
+- Updates now download, verify and install inside Flow Tube from a new update page with sectioned release notes, the download size and a Skip this version option
 - Search inside any playlist by title or channel
-- Save a playlist as a file, share it with anyone, and import one from the Playlists screen or by opening the file in Flow
+- Save a playlist as a file, share it with anyone, and import one from the Playlists screen or by opening the file in Flow Tube
 - Optional setting to remove videos from Watch later once you have watched them, with Undo when Watch later clears older ones (#1060)
 - Likes are now two built-in playlists, Liked videos and Liked music, with search, sort, select and unlike with Undo, Play all, Shuffle, Download all and Save as file
 - The video queue is redesigned on Material 3 Expressive: swipe a video away with Undo, long press for its menu, shuffle and repeat as toggle buttons, and the time left in the queue. On tablets it opens in the side pane and what plays next sits at the top of that pane, and in fullscreen it opens from its own button
@@ -57,13 +57,13 @@ NEW FEATURES
 - Lyrics are sung word by word even when the source only times each line: each word fills behind a soft edge and lifts as it starts, duets split across both sides, instrumental breaks show three filling dots, word-timed sources are preferred, and lyrics in other scripts can show a romanized line
 - The music player adapts to tablets and foldables: wide windows show Up next and Lyrics in a pane beside the player, upright tablets get a centred layout, phones in landscape show the cover beside the controls, and the controls can use black and white or your theme instead of the artwork colors
 - Download a whole album or playlist as one item in its own folder, shown on a Playlists and albums shelf in Downloads and playable with no connection (#913)
-- Downloads are now M4A audio or MP4 video with readable names and their details and cover art inside the file, so other players show them and Flow restores them after a reinstall, and songs get their own download quality setting (#866, #894, #764)
+- Downloads are now M4A audio or MP4 video with readable names and their details and cover art inside the file, so other players show them and Flow Tube restores them after a reinstall, and songs get their own download quality setting (#866, #894, #764)
 - Import your YouTube likes from a Google Takeout My Activity export, into Liked videos and Liked music (#1027)
 - New switches: Subscriptions on Home, watch progress on thumbnails, and Pause watch history (#1086)
 - A Short that links a full video shows it, and one tap opens it in the video player (#1031)
 - Local media videos show the artist embedded in the file as their channel, and its description under the video (#1168)
 - Local songs show the lyrics from a .lrc file next to them, or the lyrics embedded in the file, without looking anything up online (#1169)
-- Downloaded songs keep their lyrics inside the file, so Flow and other players show them with no connection
+- Downloaded songs keep their lyrics inside the file, so Flow Tube and other players show them with no connection
 - Local media search also matches file names and ignores accents (#1177)
 - Downloaded videos can save a subtitle file beside them, named so other players find it: pick the language in the download menu, or turn on Subtitle file in Downloads settings (#1182)
 - Local media videos find their subtitle files by themselves and turn them on, the way movie and series releases lay them out: named like the video, matched by episode (S01E02), in a Subs folder, or alone with a movie in its folder. They also list the subtitles inside MKV and MP4 files, and play any subtitle file you add from the subtitle menu, which opens in the video's folder, including files in older text encodings (#1028)
@@ -77,14 +77,14 @@ NEW FEATURES
 - Thumbnail quality can be set separately for Wi-Fi and mobile data in Quality settings, to save data on feeds and Shorts (#886)
 - A new Playback setting opens videos paused, so the description and comments can be read before anything plays (#1024)
 - Download videos you open, in Downloads settings: off by default, or on Wi-Fi or any network, at your default quality and codec, with Undo on the snackbar (#771)
-- A video linked from inside a playlist now plays with that playlist as its queue, and a new Content setting shows whether YouTube links open in Flow and opens the system screen to turn them on (#802)
+- A video linked from inside a playlist now plays with that playlist as its queue, and a new Content setting shows whether YouTube links open in Flow Tube and opens the system screen to turn them on (#802)
 - The proxy can now step aside while a VPN is on, from Network settings, and comes back when the VPN goes off (#677)
 - A SponsorBlock button in the player turns it off for just the video you are watching, and the next video starts with your setting again; the player settings sheet and the TV player have the same switch (#930)
 - Thumbnails can be turned off, separately for Wi-Fi and mobile data, in Quality settings: feeds, playlists, banners and notifications load no images, while downloads and device files keep their covers (#849)
 - Notes can hold timestamps: times like 12:34 in a video note play from that moment, the note editor inserts the current time, and a new Notes page in Library lists every note with search, filters and its video or channel, side by side on tablets (#843)
 - Subscriptions now show collaborations a channel you follow took part in, even when another channel uploaded them, with every collaborator on the card; turn it off in Content settings (#840)
 - Discover channels in Your taste: search for channels and subscribe as at setup, next to the channels you keep watching without subscribing (#804)
-- Custom theme colours can be translucent again, with an Opacity slider in the colour picker, and such themes still open in Flow Desktop
+- Custom theme colours can be translucent again, with an Opacity slider in the colour picker, and such themes still open in the desktop app
 - Choose the app font in Appearance: System default, Condensed, Serif or your own .ttf or .otf file, with a live preview (#1222)
 - Cache settings show how much space videos, songs and artwork each take, with a separate limit and a Clear button for each (#1229)
 - Double-tap seek can be turned off, and its side zones can be made narrower so the play and pause area in the middle is bigger (#1178)
@@ -121,7 +121,7 @@ IMPROVEMENTS
 - Quick action menus for videos, songs, albums and playlists rebuilt on Material 3 Expressive: they open half way and expand as you drag, show the channel or artist with its avatars, and put details and collaborators on pages of the same sheet
 - Menu actions confirm on a snackbar with Undo for Watch later, subscriptions and hidden channels, and downloading from a card opens the same quality picker as the player
 - Album and playlist menus can play, shuffle or start a radio, and History, Liked, Continue watching and Downloads open the menu on a long press
-- The playlist page is rebuilt on Material 3 Expressive with a big artwork header that names the owner, length and kind of playlist, and on tablets and unfolded foldables the header sits beside the list as on Flow Desktop
+- The playlist page is rebuilt on Material 3 Expressive with a big artwork header that names the owner, length and kind of playlist, and on tablets and unfolded foldables the header sits beside the list
 - YouTube playlists open on their first page right away and load the rest as it arrives, each sort order is remembered per playlist, and removing videos can be undone
 - Downloads shows the space it uses and what is free, can be searched, sorted and selected, lists the quality, size and date of every download, and shows videos in a grid on wide screens
 - Local media is now a full offline library: search, sort, filters for length, quality, orientation and what you haven't watched, folders side by side on tablets, a grid view, Continue watching, New marks, Play all and Shuffle, and a file menu to queue, share, inspect or delete files
@@ -133,11 +133,11 @@ IMPROVEMENTS
 - Every video grid and list now lays out like Search on tablets and foldables: at most three columns until cards grow past a comfortable size, the same margins and gaps everywhere, and a row the grid cannot fill turns into full-width rows lined up with the grid above
 - List mode on a wide screen is now one column with large thumbnails on Home, Subscriptions, channels, History and playlists, and Subscriptions now follows your cards-per-row setting
 - Channel playlists, the Playlists screen, Downloads and Local media show cards in a grid sized to the space they have, and related videos on an upright tablet use the same columns as the rest of the app
-- Downloads keep running after Flow is closed and resume where they stopped, and a downloaded song plays from its file wherever it is queued
-- Home shows your subscriptions right away from what Flow already saved, and adds new uploads below what you are looking at
+- Downloads keep running after Flow Tube is closed and resume where they stopped, and a downloaded song plays from its file wherever it is queued
+- Home shows your subscriptions right away from what Flow Tube already saved, and adds new uploads below what you are looking at
 - Not interested hides that video for good, resetting your profile keeps everything you hid, and the feed stays closer to what you actually watch (#1086, #1031, #907)
 - Recommendations learn phrases instead of single words: creator tags like "guitar playalong" stay whole, description hashtags count, and word pairs you keep watching together become phrases, so the feed searches for what you watch rather than one generic word (#907)
-- A burst of Shorts or a couple of new videos no longer erases interests you have followed for months, and the time of day only shapes the feed once Flow has seen enough of your viewing at that hour (#907)
+- A burst of Shorts or a couple of new videos no longer erases interests you have followed for months, and the time of day only shapes the feed once Flow Tube has seen enough of your viewing at that hour (#907)
 - Thumbs-down and Not interested now stick: a rejected topic is remembered for months, fading slowly, and is recognised under new titles, a disliked video never seeds related videos, and rejecting things no longer makes the feed more random (#907)
 - Styled titles such as 𝙋𝙃𝙊𝙉𝙆 or ｐｈｏｎｋ read as the word they spell, short topics such as AI, F1 and 3D count, and Chinese, Japanese and Thai titles are split into real words (#907)
 - Profiles the old learning had worn down to a few stray words are rebuilt from what your channels teach when you update, and topics you blocked are cleared out of them (#907)
@@ -145,7 +145,7 @@ IMPROVEMENTS
 - Shorts default quality can now be set to 1440p or 2160p (#1125)
 - Search history keeps each search's filters and applies them again when the entry is tapped, showing them under the entry (#1174)
 - Text in channel posts, a channel's About tab and the video title in the description can be selected and copied, and a long press copies a channel's name (#951)
-- Deep Flow now keeps a session private: searches and actions stay out of Recap, feed and Shorts memory is not saved, and scrobbling stops unless you allow it. Long-press the FLOW wordmark or the logo to switch it (#1228)
+- Deep Focus now keeps a session private: searches and actions stay out of Recap, feed and Shorts memory is not saved, and scrobbling stops unless you allow it. Long-press the FLOW TUBE wordmark or the logo to switch it (#1228)
 - The video mini player closes with a swipe down (#966) and tucks into the side of the screen when dragged well past it or thrown out through its own side
 - The video mini player stays above the keyboard while you type (#1241)
 - The music bar closes with a swipe down
@@ -155,7 +155,7 @@ IMPROVEMENTS
 - A song played from music search now plays on its own and Endless radio fills Up Next with related songs, as in YouTube Music, instead of queueing every other result with the same title
 - Live chat on tablets and unfolded phones opens when you tap it rather than on its own, and a new Live chat switch in Settings, Playback turns it off completely (#1042)
 - YouTube Courses show as courses: "Course, 124 lessons" in search, on channel Home and in a channel's Courses tab, and they open as a playlist instead of an upcoming video (#1299)
-- The app language list now offers every translated language, Traditional Chinese (Taiwan) included, and Android 13 and later list the same languages in Settings, App languages. A language chosen there and one chosen in Flow are the same setting (#1300)
+- The app language list now offers every translated language, Traditional Chinese (Taiwan) included, and Android 13 and later list the same languages in Settings, App languages. A language chosen there and one chosen in Flow Tube are the same setting (#1300)
 - Videos keep playing as audio when you leave the app or turn the screen off; Background Play is now on unless you turn it off (#1298)
 - The video decoder is reused when the picture moves to a new surface, instead of being rebuilt every time (#1298)
 
@@ -164,13 +164,13 @@ PERFORMANCE
 - Nothing animates behind a hidden layer any more: the seek bar wave, lyrics sync, mini player equalizer, queue waveform and lyrics loading indicator all pause when their surface is not visible, ending a constant per-frame drain across entire listening sessions
 - Music shelves only recompose while the Music screen is visible, similar-song lanes are cached, and each track change fetches its similar-tracks lane once instead of twice
 - Feed ranking noise scales with your actual scores instead of drowning them when the feed was stale
-- Flow opens as soon as its first screen is ready instead of holding every launch behind a two second splash, and on Android 13 and later the splash matches your theme and app icon
+- Flow Tube opens as soon as its first screen is ready instead of holding every launch behind a two second splash, and on Android 13 and later the splash matches your theme and app icon
 - Loading placeholders now take the exact shape of the cards they stand in for, so the feed no longer jumps when it arrives, and they no longer redraw the whole layout on every frame
 - A YouTube playlist is fetched once instead of twice in full on every open, Local media no longer rescans the device on every visit, and download progress updates once a second instead of four times
 - The expanded music player is no longer rebuilt on every song change, and lyrics stop updating while the music is paused
 - Feed ranking builds its lookups once per pass instead of once per video, impressions are recorded off the main thread, and scroll and rotation bookkeeping is saved to disk less often
 - Opening and collapsing the video player no longer jumps ahead after a slow frame, collapsing glides into the corner without a bounce, and a swipe's speed carries into the motion
-- Live streams use far less data: their playlists now download compressed, so a stream at 144p used about 20 KB/s instead of 116 KB/s in testing. Live chat waits as long as YouTube asks between updates and stops while Flow is in the background (#1042)
+- Live streams use far less data: their playlists now download compressed, so a stream at 144p used about 20 KB/s instead of 116 KB/s in testing. Live chat waits as long as YouTube asks between updates and stops while Flow Tube is in the background (#1042)
 
 FIXES AND STABILITY
 - Fix a memory leak where closing and reopening the video player left the previous player's settings listeners running (#1148)
@@ -213,7 +213,7 @@ FIXES AND STABILITY
 - Fix the ambient player glow and cap session artwork at the platform limit, ending a crash on some ROMs
 - Fix a tablet held upright splitting the player into two narrow columns, and the volume gesture starting from a stale level or dropping a boost above 100%
 - Fix the page under the video bouncing and jumping around when a drag towards portrait fullscreen is released short of it: it now tracks your finger exactly and settles straight back, and a flick back up cancels the transition however far it had travelled
-- Fix videos that play for about a minute and then buffer forever: Flow now tells an expired stream link apart from one YouTube has refused, re-requests the refused ones properly signed instead of replaying them unsigned, and moves on to a different source after YouTube refuses the same one twice rather than retrying it forever
+- Fix videos that play for about a minute and then buffer forever: Flow Tube now tells an expired stream link apart from one YouTube has refused, re-requests the refused ones properly signed instead of replaying them unsigned, and moves on to a different source after YouTube refuses the same one twice rather than retrying it forever
 - Fix playback that could never recover once YouTube stopped trusting the app: the browsing identity behind verification is now replaced automatically, and a new Reset YouTube session action in Diagnostics does it on demand — the supported version of clearing app data
 - Fix a day-long playback outage whenever YouTube changes its player script: an unreadable copy is refetched instead of being trusted from the cache for six hours, and the diagnostics report now names the script version that could not be read
 - Stream requests now carry the headers of the client that issued them, rather than pairing a native client with a browser's
@@ -232,7 +232,7 @@ FIXES AND STABILITY
 - Fix the feed shrinking after a few refreshes in a row, when discovery dropped to the two searches it had not used recently instead of keeping the rest behind them
 - Fix subscriptions whose avatar was saved as a link to the channel page: they showed a blank avatar on every card, and are now repaired on launch
 - Fix Subscriptions saying channels could not be loaded after a short network drop: their pages are tried again once, and a channel whose newest uploads arrived is no longer listed (#1186)
-- Fix a channel's Shorts staying filed as ordinary videos in Subscriptions when Flow could not check that channel's Shorts in time
+- Fix a channel's Shorts staying filed as ordinary videos in Subscriptions when Flow Tube could not check that channel's Shorts in time
 - Fix the Shorts quality menu listing the same resolution several times without naming the codec of each (#1213)
 - Fix being unable to remove a Short from Saved Shorts: its card menu now has Remove from Saved Shorts, with undo (#1024)
 - Fix a channel page losing its sort and scroll position, and loading again, after picture-in-picture or opening a Short (#1024)
@@ -240,7 +240,7 @@ FIXES AND STABILITY
 - Fix the Local Media search text and cursor flickering and the grid jumping while typing, mostly on first open or with the mini player showing (#1220)
 - Fix an in-progress download's title shrinking to a few letters on phones: its pause and cancel buttons now sit under the title on narrow screens (#1225)
 - Fix a download freezing at a fixed percentage: when no data arrives for a while it fetches the stream again or stops with Retry (#1224)
-- Fix YouTube links in descriptions, comments and posts opening the browser instead of the video, channel or playlist in Flow, and links to other videos in a description doing nothing at all (#1032)
+- Fix YouTube links in descriptions, comments and posts opening the browser instead of the video, channel or playlist in Flow Tube, and links to other videos in a description doing nothing at all (#1032)
 - Fix YouTube requests, thumbnails, update checks, song recognition and the music player ignoring the proxy or keeping an old one until a restart
 - Fix notes never syncing from one Android device to another
 - Fix SponsorBlock categories set to Mute playing at full volume, notify-only categories showing nothing, and downloaded videos skipping segments with SponsorBlock turned off
@@ -249,7 +249,7 @@ FIXES AND STABILITY
 - Fix the Unlimited media cache stopping at 500 MB, and a video playback error clearing cached songs
 - Fix music search showing suggestions with Search suggestions turned off, and videos watched with history paused still reaching Recap
 - Fix videos behind a content warning showing no suggested videos and not autoplaying the next one (#1244)
-- Fix the Exact and Both date styles printing a made-up date on cards for older videos: a calendar date now shows only where Flow knows it, as in Subscriptions and on the watch page, and the Uploaded detail in the description follows the date style (#1242)
+- Fix the Exact and Both date styles printing a made-up date on cards for older videos: a calendar date now shows only where Flow Tube knows it, as in Subscriptions and on the watch page, and the Uploaded detail in the description follows the date style (#1242)
 - Fix Subscriptions sometimes placing an upload from days ago at the top of the feed, because ages like "3 days ago" were read as seconds
 - Fix videos stopping at about one minute for some people on every network and VPN: a stream YouTube refuses partway through is now picked up from another source without stopping, and the YouTube identity it refused is replaced (#921, #1251)
 - Fix a background playlist stopping for good after a few refused videos, and reopening the app playing a stream YouTube had already refused again
@@ -295,7 +295,7 @@ FIXES AND STABILITY
 - YouTube playlists load past their first 100 videos again: YouTube moved the link to the next page, so every playlist and course stopped at 100 (#1299)
 - A double tap on the side of the video seeks instead of landing on the Previous or Next button the first tap revealed (#1308)
 - Fix a crash when a back swipe on the video player was cancelled while the player was still moving (#1307)
-- Fix a crash when a media button or a leftover notification started Flow with nothing to play (#1309)
+- Fix a crash when a media button or a leftover notification started Flow Tube with nothing to play (#1309)
 - With Background Play off, Play in the notification resumes audio only instead of decoding video nobody can see (#1298)
 - Coming back to a video that played in the background no longer forces a rebuffer while the picture returns (#1298)
 
