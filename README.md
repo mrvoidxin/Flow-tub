@@ -136,7 +136,7 @@ Each APK is signed. Check the certificate fingerprint with a tool like [AppVerif
 
 ## Build from source
 
-You need JDK 17+ and the Android SDK (API 36). The project uses Gradle with a version catalogue in `gradle/libs.versions.toml`.
+You need JDK 17+ and the Android SDK (API 37). The project uses Gradle with a version catalogue in `gradle/libs.versions.toml`.
 
 ```bash
 git clone https://github.com/mrvoidxin/Flow-tub.git
