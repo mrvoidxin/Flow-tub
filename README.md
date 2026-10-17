@@ -8,7 +8,7 @@
   <p>
     <a href="https://github.com/mrvoidxin/Flow-tub/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/mrvoidxin/Flow-tub?style=for-the-badge&label=download&color=red"></a>
     <a href="License"><img alt="License: GPL-3.0" src="https://img.shields.io/badge/license-GPL--3.0-blue?style=for-the-badge"></a>
-    <img alt="Android 7.0+" src="https://img.shields.io/badge/android-7.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+    <img alt="Android 8.0+" src="https://img.shields.io/badge/android-8.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white">
     <img alt="Kotlin" src="https://img.shields.io/badge/kotlin-2.4-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white">
   </p>
 
@@ -126,7 +126,7 @@ Every release ships three APKs. Pick the one that matches your device — the ap
 
 ### Requirements
 
-**Minimum:** Android 7.0 (API 24) · **Tested up to:** Android 16 (API 36)
+**Minimum:** Android 8.0 (API 26) · **Tested up to:** Android 16 (API 36)
 
 ### Verify your download
 
