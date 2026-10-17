@@ -63,7 +63,7 @@
     </queries>
 
     <application
-        android:name=".FlowApplication"
+        android:name=".FlowTubeApplication"
         android:allowBackup="true"
         android:backupAgent=".data.backup.FlowBackupAgent"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -74,7 +74,7 @@
         android:label="@string/app_launcher_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Flow"
+        android:theme="@style/Theme.FlowTube"
         android:usesCleartextTraffic="true"
         android:resizeableActivity="true"
         android:requestLegacyExternalStorage="true"
@@ -109,7 +109,7 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.Flow.Starting">
+            android:theme="@style/Theme.FlowTube.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
@@ -125,7 +125,7 @@
             android:launchMode="singleTask"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
-            android:theme="@style/Theme.Flow.Starting"
+            android:theme="@style/Theme.FlowTube.Starting"
             android:windowSoftInputMode="adjustResize"
             android:windowLayoutInDisplayCutoutMode="shortEdges">
 
@@ -199,7 +199,7 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
 
-            <!-- A playlist file shared from Flow opens here and is imported. -->
+            <!-- A playlist file shared from Flow Tube opens here and is imported. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.SEND" />
@@ -255,11 +255,11 @@
             android:enabled="true"
             android:exported="false">
             <intent-filter>
-                <action android:name="io.github.aedev.flow.action.CANCEL_DOWNLOAD" />
-                <action android:name="io.github.aedev.flow.action.RETRY_DOWNLOAD" />
-                <action android:name="io.github.aedev.flow.action.PAUSE_DOWNLOAD" />
-                <action android:name="io.github.aedev.flow.action.RESUME_DOWNLOAD" />
-                <action android:name="io.github.aedev.flow.action.DISMISS_NOTIFICATION" />
+                <action android:name="com.flowtube.app.action.CANCEL_DOWNLOAD" />
+                <action android:name="com.flowtube.app.action.RETRY_DOWNLOAD" />
+                <action android:name="com.flowtube.app.action.PAUSE_DOWNLOAD" />
+                <action android:name="com.flowtube.app.action.RESUME_DOWNLOAD" />
+                <action android:name="com.flowtube.app.action.DISMISS_NOTIFICATION" />
             </intent-filter>
         </receiver>
 
@@ -287,7 +287,7 @@
             android:exported="true"
             android:excludeFromRecents="true"
             android:taskAffinity=""
-            android:theme="@style/Theme.Flow">
+            android:theme="@style/Theme.FlowTube">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -393,7 +393,7 @@
         </receiver>
 
         <!-- App Icon Variants (via activity-alias)                          -->
-        <!-- Default: Flow Red -->
+        <!-- Default: Flow Tube Red -->
         <activity-alias
             android:name=".IconFlowRed"
             android:enabled="true"
@@ -407,13 +407,13 @@
             </intent-filter>
         </activity-alias>
 
-        <!-- Flow Light -->
+        <!-- Flow Tube Light -->
         <activity-alias
             android:name=".IconFlowLight"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_flow_light"
-            android:roundIcon="@mipmap/ic_launcher_flow_light_round"
+            android:icon="@mipmap/ic_launcher_flowtube_light"
+            android:roundIcon="@mipmap/ic_launcher_flowtube_light_round"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -421,13 +421,13 @@
             </intent-filter>
         </activity-alias>
 
-        <!-- Flow Play (white background, red video frame + play mark) -->
+        <!-- Flow Tube Play (white background, red video frame + play mark) -->
         <activity-alias
             android:name=".IconFlowPlay"
             android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_flow_play"
-            android:roundIcon="@mipmap/ic_launcher_flow_play_round"
+            android:icon="@mipmap/ic_launcher_flowtube_play"
+            android:roundIcon="@mipmap/ic_launcher_flowtube_play_round"
             android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -632,7 +632,7 @@
         </activity-alias>
 
 
-        <!-- Files Flow hands to other apps: recap cards and playlist files, only from their cache folders. -->
+        <!-- Files Flow Tube hands to other apps: recap cards and playlist files, only from their cache folders. -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.files"

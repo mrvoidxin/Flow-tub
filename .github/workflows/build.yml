@@ -19,13 +19,14 @@ permissions:
   contents: read
 
 env:
-  # Certificate of the official Flow release key. IzzyOnDroid and every
-  # installed client pin this value; an APK signed with anything else cannot
-  # be installed as an update. Changing it forces every user to reinstall.
-  EXPECTED_SIGNER_SHA256: 4322294ed4caa2d4294140095818080ffe8acc1fbe3cdc76107df45c5286be40
+  # Certificate of the release key. Every installed client pins this value; an
+  # APK signed with anything else cannot be installed as an update. Override it
+  # with a repository variable (Settings -> Variables) once a real release key
+  # exists. When it is empty the verification step is skipped.
+  EXPECTED_SIGNER_SHA256: ${{ vars.EXPECTED_SIGNER_SHA256 }}
   # Certificate of the nightly key. Every nightly must carry it so each one
   # installs over the previous nightly without an uninstall.
-  EXPECTED_NIGHTLY_SIGNER_SHA256: e42225b5ab3ac68236e54567ef0c4878afbafcdd3d438fbaba343e2d70425bf0
+  EXPECTED_NIGHTLY_SIGNER_SHA256: ${{ vars.EXPECTED_NIGHTLY_SIGNER_SHA256 }}
 
 jobs:
   build:
@@ -155,7 +156,7 @@ jobs:
       # is unrecoverable for installed users, so fail the build rather than
       # publish. Skipped when no keystore was available, e.g. on fork PRs.
       - name: Verify release signing certificate
-        if: ${{ steps.keystore.outputs.signed == 'true' }}
+        if: ${{ steps.keystore.outputs.signed == 'true' && env.EXPECTED_SIGNER_SHA256 != '' }}
         run: |
           set -uo pipefail
           apksigner=$(find "$ANDROID_SDK_ROOT/build-tools" -name apksigner -type f | sort -V | tail -1)
@@ -201,15 +202,15 @@ jobs:
           if [ "$NIGHTLY_SIGNED" = "true" ]; then
             apksigner=$(find "$ANDROID_SDK_ROOT/build-tools" -name apksigner -type f | sort -V | tail -1)
             actual=$("$apksigner" verify --print-certs "$src" | grep -m1 'certificate SHA-256 digest' | awk '{print $NF}')
-            if [ "$actual" != "$EXPECTED_NIGHTLY_SIGNER_SHA256" ]; then
+            if [ -n "$EXPECTED_NIGHTLY_SIGNER_SHA256" ] && [ "$actual" != "$EXPECTED_NIGHTLY_SIGNER_SHA256" ]; then
               echo "::error::The nightly is signed with '$actual', expected '$EXPECTED_NIGHTLY_SIGNER_SHA256'"
               exit 1
             fi
             echo "OK nightly -> $actual"
           fi
           mkdir -p dist-nightly
-          cp "$src" "dist-nightly/flow-nightly-${GITHUB_RUN_NUMBER}.apk"
-          (cd dist-nightly && sha256sum flow-nightly-*.apk | tee checksums.txt)
+          cp "$src" "dist-nightly/FlowTube-nightly-${GITHUB_RUN_NUMBER}.apk"
+          (cd dist-nightly && sha256sum FlowTube-nightly-*.apk | tee checksums.txt)
 
       - name: Report individual APK sizes
         shell: bash
@@ -256,7 +257,7 @@ jobs:
       - name: Upload GitHub universal APK
         uses: actions/upload-artifact@v7
         with:
-          name: flow-github-universal-release-apk
+          name: flowtube-github-universal-release-apk
           path: app/build/outputs/apk/github/release/app-github-universal-release*.apk
           if-no-files-found: error
           retention-days: 14
@@ -265,7 +266,7 @@ jobs:
       - name: Upload GitHub ARM64 APK
         uses: actions/upload-artifact@v7
         with:
-          name: flow-github-arm64-release-apk
+          name: flowtube-github-arm64-release-apk
           path: app/build/outputs/apk/github/release/app-github-arm64-v8a-release*.apk
           if-no-files-found: error
           retention-days: 14
@@ -274,7 +275,7 @@ jobs:
       - name: Upload GitHub ARMv7 APK
         uses: actions/upload-artifact@v7
         with:
-          name: flow-github-armeabi-v7a-release-apk
+          name: flowtube-github-armeabi-v7a-release-apk
           path: app/build/outputs/apk/github/release/app-github-armeabi-v7a-release*.apk
           if-no-files-found: error
           retention-days: 14
@@ -284,7 +285,7 @@ jobs:
         if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
         uses: actions/upload-artifact@v7
         with:
-          name: flow-nightly-apk
+          name: flowtube-nightly-apk
           path: dist-nightly/*
           if-no-files-found: error
           retention-days: 14
@@ -292,7 +293,7 @@ jobs:
       - name: Upload FOSS universal APK
         uses: actions/upload-artifact@v7
         with:
-          name: flow-foss-universal-release-apk
+          name: flowtube-foss-universal-release-apk
           path: app/build/outputs/apk/foss/release/app-foss-universal-release*.apk
           if-no-files-found: error
           retention-days: 14
@@ -301,7 +302,7 @@ jobs:
       - name: Upload FOSS ARM64 APK
         uses: actions/upload-artifact@v7
         with:
-          name: flow-foss-arm64-release-apk
+          name: flowtube-foss-arm64-release-apk
           path: app/build/outputs/apk/foss/release/app-foss-arm64-v8a-release*.apk
           if-no-files-found: error
           retention-days: 14
@@ -310,7 +311,7 @@ jobs:
       - name: Upload FOSS ARMv7 APK
         uses: actions/upload-artifact@v7
         with:
-          name: flow-foss-armeabi-v7a-release-apk
+          name: flowtube-foss-armeabi-v7a-release-apk
           path: app/build/outputs/apk/foss/release/app-foss-armeabi-v7a-release*.apk
           if-no-files-found: error
           retention-days: 14
@@ -321,7 +322,7 @@ jobs:
       - name: Upload R8 mappings
         uses: actions/upload-artifact@v7
         with:
-          name: flow-r8-mappings
+          name: flowtube-r8-mappings
           path: app/build/outputs/mapping/*/mapping.txt
           if-no-files-found: warn
           retention-days: 90
@@ -345,7 +346,7 @@ jobs:
       - name: Download nightly APK
         uses: actions/download-artifact@v8
         with:
-          name: flow-nightly-apk
+          name: flowtube-nightly-apk
           path: dist-nightly/
 
       - name: Move the nightly tag and replace its assets
@@ -354,13 +355,13 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          apk="flow-nightly-${GITHUB_RUN_NUMBER}.apk"
+          apk="FlowTube-nightly-${GITHUB_RUN_NUMBER}.apk"
           test -f "dist-nightly/$apk"
           if gh release view nightly >/dev/null 2>&1; then
             gh api -X PATCH "repos/$GH_REPO/git/refs/tags/nightly" -f sha="$GITHUB_SHA" -F force=true >/dev/null
           else
             gh release create nightly --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title "Flow nightly" --notes "Rolling nightly build."
+              --title "Flow Tube nightly" --notes "Rolling nightly build."
           fi
           gh release upload nightly "dist-nightly/$apk" dist-nightly/checksums.txt --clobber
           for old in $(gh release view nightly --json assets --jq '.assets[].name'); do
@@ -369,8 +370,8 @@ jobs:
             fi
           done
           gh release edit nightly --prerelease --latest=false \
-            --title "Flow nightly ${GITHUB_RUN_NUMBER}" \
-            --notes "Built from ${GITHUB_SHA::7} by run ${GITHUB_RUN_NUMBER}. Installs next to the stable app as Flow Nightly and updates itself from here."
+            --title "Flow Tube nightly ${GITHUB_RUN_NUMBER}" \
+            --notes "Built from ${GITHUB_SHA::7} by run ${GITHUB_RUN_NUMBER}. Installs next to the stable app as Flow Tube Nightly and updates itself from here."
 
   release:
     name: Create Release
@@ -388,28 +389,27 @@ jobs:
       - name: Download release APKs
         uses: actions/download-artifact@v8
         with:
-          pattern: flow-*-release-apk
+          pattern: flowtube-*-release-apk
           path: dist/
           merge-multiple: true
 
-      # flow.apk and flow-foss.apk are the universal builds and are a public
-      # contract: IzzyOnDroid matches release assets by file name, and the
-      # README links to them directly. Do not rename or drop them without
-      # first updating the IzzyOnDroid entry for io.github.aedev.flow.
+      # Release asset names carry the version and the ABI token. The in-app
+      # updater matches assets by ABI token, so keep that token in the name.
       - name: Rename APKs for release
         run: |
           set -euo pipefail
-          mv dist/app-github-universal-release.apk   dist/flow.apk
-          mv dist/app-foss-universal-release.apk     dist/flow-foss.apk
-          mv dist/app-github-arm64-v8a-release.apk   dist/flow-arm64-v8a.apk
-          mv dist/app-github-armeabi-v7a-release.apk dist/flow-armeabi-v7a.apk
-          mv dist/app-foss-arm64-v8a-release.apk     dist/flow-foss-arm64-v8a.apk
-          mv dist/app-foss-armeabi-v7a-release.apk   dist/flow-foss-armeabi-v7a.apk
+          v="${GITHUB_REF#refs/tags/v}"
+          mv dist/app-github-universal-release.apk   "dist/FlowTube-${v}-universal.apk"
+          mv dist/app-foss-universal-release.apk     "dist/FlowTube-${v}-foss-universal.apk"
+          mv dist/app-github-arm64-v8a-release.apk   "dist/FlowTube-${v}-arm64-v8a.apk"
+          mv dist/app-github-armeabi-v7a-release.apk "dist/FlowTube-${v}-armeabi-v7a.apk"
+          mv dist/app-foss-arm64-v8a-release.apk     "dist/FlowTube-${v}-foss-arm64-v8a.apk"
+          mv dist/app-foss-armeabi-v7a-release.apk   "dist/FlowTube-${v}-foss-armeabi-v7a.apk"
 
       - name: Generate checksums
         run: |
           cd dist
-          sha256sum flow*.apk > checksums.txt
+          sha256sum *.apk > checksums.txt
           cat checksums.txt
 
       - name: Get version from tag
@@ -421,22 +421,22 @@ jobs:
           RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
         run: |
           test -s release-notes.md
-          grep -Fqx "# Flow ${RELEASE_VERSION}" release-notes.md
+          grep -Fqx "# Flow Tube ${RELEASE_VERSION}" release-notes.md
 
       - name: Create Release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
-          name: Flow ${{ steps.get_version.outputs.VERSION }}
+          name: Flow Tube ${{ steps.get_version.outputs.VERSION }}
           body_path: release-notes.md
           generate_release_notes: false
           files: |
-            dist/flow.apk
-            dist/flow-foss.apk
-            dist/flow-arm64-v8a.apk
-            dist/flow-armeabi-v7a.apk
-            dist/flow-foss-arm64-v8a.apk
-            dist/flow-foss-armeabi-v7a.apk
+            dist/FlowTube-*-universal.apk
+            dist/FlowTube-*-arm64-v8a.apk
+            dist/FlowTube-*-armeabi-v7a.apk
+            dist/FlowTube-*-foss-universal.apk
+            dist/FlowTube-*-foss-arm64-v8a.apk
+            dist/FlowTube-*-foss-armeabi-v7a.apk
             dist/checksums.txt
           draft: false
           prerelease: false
