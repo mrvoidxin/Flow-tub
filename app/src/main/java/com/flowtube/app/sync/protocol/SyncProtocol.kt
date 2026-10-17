@@ -60,7 +60,7 @@ class SyncPeerException(
 ) : Exception("peer error [$code]: $detail")
 
 /**
- * Drives one FLOW-SYNC/1 session over a [SyncConnection]. Strict lockstep with an
+ * Drives one FLOWTUBE-SYNC/1 session over a [SyncConnection]. Strict lockstep with an
  * independent monotonic `seq` per direction: handshake → capability/selection
  * negotiation → SAS → consent → streamed transfer → atomic apply. v1 is one-way per session.
  *

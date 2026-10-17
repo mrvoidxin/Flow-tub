@@ -7,7 +7,7 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 /**
- * FLOW-SYNC/1 cryptography. Implements the byte-exact scheme so that frames sealed by the Rust desktop
+ * flowtube-sync/1 cryptography. Implements the byte-exact scheme so that frames sealed by the Rust desktop
  * (RustCrypto `aes-gcm` / `hkdf` / `hmac`) open here and vice-versa.
  *
  * Primitives (all standard JCE, hardware-accelerated where available):
@@ -25,9 +25,9 @@ object SyncCrypto {
     const val GCM_TAG_BITS = 128
 
     /** HKDF info labels — exact ASCII bytes */
-    private val INFO_H2C = "flow-sync/1 host->client".toByteArray(Charsets.US_ASCII)
-    private val INFO_C2H = "flow-sync/1 client->host".toByteArray(Charsets.US_ASCII)
-    private val LABEL_SAS = "flow-sync/1 sas".toByteArray(Charsets.US_ASCII)
+    private val INFO_H2C = "flowtube-sync/1 host->client".toByteArray(Charsets.US_ASCII)
+    private val INFO_C2H = "flowtube-sync/1 client->host".toByteArray(Charsets.US_ASCII)
+    private val LABEL_SAS = "flowtube-sync/1 sas".toByteArray(Charsets.US_ASCII)
 
     private val secureRandom = SecureRandom()
 
@@ -92,7 +92,7 @@ object SyncCrypto {
 
     /**
      * 6-digit Short Authentication String:
-     * `num = 31-bit BE of HMAC-SHA256(K_master, "flow-sync/1 sas" ∥ sid)[0..4]; num % 1e6`.
+     * `num = 31-bit BE of HMAC-SHA256(K_master, "flowtube-sync/1 sas" ∥ sid)[0..4]; num % 1e6`.
      */
     fun sas(masterKey: ByteArray, sessionId: ByteArray): String {
         val mac = Mac.getInstance("HmacSHA256")

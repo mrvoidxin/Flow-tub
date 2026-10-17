@@ -15,7 +15,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
- * The desktop's crypto golden vectors (the JSON files in `src-tauri/tests/fixtures/flow-sync/`, mirrored into
+ * The desktop's crypto golden vectors (the JSON files in `src-tauri/tests/fixtures/flowtube-sync/`, mirrored into
  * `resources/sync/desktop/crypto/`). [SyncGoldenVectorsTest] asserts Android's own set; this asserts
  * the desktop's, so each side checks both fixture sets and neither can drift alone.
  */
@@ -37,7 +37,7 @@ class DesktopGoldenVectorsTest {
     @Test
     fun sas_matches() {
         val f = fixture("sas")
-        assertEquals("920700", SyncCrypto.sas(f.hex("master_hex"), f.hex("session_id_hex")))
+        assertEquals("786872", SyncCrypto.sas(f.hex("master_hex"), f.hex("session_id_hex")))
         assertEquals(f.getValue("sas").jsonPrimitive.content, SyncCrypto.sas(f.hex("master_hex"), f.hex("session_id_hex")))
     }
 

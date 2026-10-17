@@ -69,8 +69,8 @@ Always pull the latest `main` before starting work, to minimize merge conflicts.
 
 ### Product Flavors
 
-Flow Tube builds two flavors: `github` (default, in-app updater enabled) and `foss` (no updater).
-**Always use flavor-prefixed Gradle tasks** — `assembleGithubDebug`, `compileFossDebugKotlin` —
+Flow Tube builds one flavor: `github` (in-app updater enabled).
+**Always use flavor-prefixed Gradle tasks** — `assembleGithubDebug`, `compileGithubDebugKotlin` —
 never bare `assembleDebug` or `compileDebugKotlin`.
 
 ## 🎨 Material 3 — Strict Guidelines
@@ -521,10 +521,10 @@ The minimum validation for a non-trivial change:
 ./gradlew ktlintCheck
 ./gradlew :app:testGithubDebugUnitTest
 ./gradlew :app:compileGithubDebugKotlin
-./gradlew :app:compileFossDebugKotlin
+./gradlew :app:compileGithubDebugKotlin
 ```
 
-Both flavors must compile — a change that only builds `github` will fail CI on `foss`.
+The flavor must compile and its unit tests pass; CI runs `assembleGithubRelease` and `testGithubDebugUnitTest`.
 
 - **For UI changes, actually run the app** on an emulator or device and exercise the golden path plus
   edge cases. A passing build does not mean the feature works.
@@ -579,7 +579,7 @@ secrets for real releases; never rotate them once a release is published.
 `FlowTube-<version>-arm64-v8a.apk`, and `FlowTube-<version>-armeabi-v7a.apk`. The in-app updater
 matches assets by ABI token rather than by a fixed prefix, so keep the ABI token in the name.
 
-**`versionCode` must increase on every release.** F-Droid-format repositories use it to detect
+**`versionCode` must increase on every release.** Repositories and the in-app updater use it to detect
 updates. The ABI splits all share one `versionCode`, so the universal APK is the only artifact such
 a repository should consume.
 

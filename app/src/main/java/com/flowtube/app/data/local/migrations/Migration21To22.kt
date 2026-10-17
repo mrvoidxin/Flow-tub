@@ -3,7 +3,7 @@ package com.flowtube.app.data.local.migrations
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-// Device Sync (FLOW-SYNC/1): idempotency ledger + known peers.
+// Device Sync (FLOWTUBE-SYNC/1): idempotency ledger + known peers.
 class Migration21To22 : Migration(21, 22) {
     override fun migrate(db: SupportSQLiteDatabase) {
         db.execSQL(

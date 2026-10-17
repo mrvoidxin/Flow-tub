@@ -54,8 +54,6 @@ body:
       label: Installation source
       options:
         - GitHub release APK
-        - F-Droid or another FOSS repository
-        - Nightly build
         - Development build from source
         - Other
     validations:

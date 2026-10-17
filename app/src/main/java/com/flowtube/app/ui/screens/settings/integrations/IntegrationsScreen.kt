@@ -80,7 +80,7 @@ internal fun IntegrationsScreen(
         group(key = "integrations.dislikes.group", header = R.string.player_settings_rytd_title) {
             switch(IntegrationsIndex.dislikes, viewModel.dislikes, viewModel::setDislikes, icon = Icons.Outlined.ThumbDownOffAlt)
         }
-        if (BuildConfig.UPDATER_ENABLED) {
+        if (BuildConfig.UPDATER_ENABLED && BuildConfig.DISCORD_APPLICATION_ID.isNotBlank()) {
             discordSection(
                 state = discordState,
                 onEnabledChange = viewModel::setDiscordEnabled,

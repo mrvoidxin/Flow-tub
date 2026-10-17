@@ -49,7 +49,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-feature android:name="android.hardware.microphone" android:required="false" />
 
-    <!-- Device Sync (FLOW-SYNC/1): resolve the host LAN IP for the QR code. -->
+    <!-- Device Sync (FLOWTUBE-SYNC/1): resolve the host LAN IP for the QR code. -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- Device Sync: scan the peer's QR code to receive the session key out-of-band. -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -240,7 +240,7 @@
             android:name=".data.video.downloader.work.DownloadActionReceiver"
             android:exported="false" />
 
-        <!-- Device Sync (FLOW-SYNC/1) foreground service: keeps the LAN WebSocket
+        <!-- Device Sync (FLOWTUBE-SYNC/1) foreground service: keeps the LAN WebSocket
              transfer alive while the screen is off / app is backgrounded. -->
         <service
             android:name=".sync.transport.SyncForegroundService"

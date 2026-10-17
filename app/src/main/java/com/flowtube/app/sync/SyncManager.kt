@@ -46,7 +46,7 @@ import javax.inject.Singleton
 private const val MANUAL_SHARE_TTL_SECONDS = 600L
 
 /**
- * Owns one FLOW-SYNC/1 session end-to-end and exposes it as a single [StateFlow].
+ * Owns one FLOWTUBE-SYNC/1 session end-to-end and exposes it as a single [StateFlow].
  *
  * Role (SENDER/RECEIVER) and transport (host=show-QR / client=scan-QR) are **independent**: any of
  * the four combinations is valid. This is what lets a camera-less peer (e.g. desktop) *receive* by

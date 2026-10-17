@@ -186,20 +186,18 @@
       <section id="download">
         <h2>Download</h2>
         <p style="color: var(--muted); margin-top: -8px">
-          Every release ships three APKs. Pick the one that matches your device — the app is identical in all three.
+          Every release ships one universal APK. It carries both 32-bit and 64-bit ARM code, so it installs on every supported device.
         </p>
         <table>
           <thead>
-            <tr><th>Your device</th><th>APK</th><th>Size</th></tr>
+            <tr><th>APK</th><th>Size</th><th>Devices</th></tr>
           </thead>
           <tbody>
-            <tr><td>Most phones and tablets (64-bit ARM)</td><td><code>FlowTube-1.0.0-arm64-v8a.apk</code></td><td>~21 MB</td></tr>
-            <tr><td>Older 32-bit phones</td><td><code>FlowTube-1.0.0-armeabi-v7a.apk</code></td><td>~20 MB</td></tr>
-            <tr><td>Any device</td><td><code>FlowTube-1.0.0-universal.apk</code></td><td>~23 MB</td></tr>
+            <tr><td><code>FlowTube-1.0.0-universal.apk</code></td><td>~23 MB</td><td>Every supported phone and tablet</td></tr>
           </tbody>
         </table>
         <p style="color: var(--muted)">
-          Not sure? Take the arm64-v8a build — it works on almost every phone made since 2016. The universal APK works everywhere.
+          The app also updates itself: it checks for a new release and installs it after you confirm.
         </p>
       </section>
 
@@ -224,9 +222,9 @@ cd Flow-tub
 # Debug build
 ./gradlew :app:assembleGithubDebug
 
-# Release build — universal, arm64-v8a, armeabi-v7a
+# Release build — the single universal APK
 ./gradlew :app:assembleGithubRelease</code></pre>
-        <p style="color: var(--muted)">Output lands in <code>app/build/outputs/apk/github/</code>.</p>
+        <p style="color: var(--muted)">Output lands in <code>app/build/outputs/apk/github/release/</code>.</p>
       </section>
 
       <footer>

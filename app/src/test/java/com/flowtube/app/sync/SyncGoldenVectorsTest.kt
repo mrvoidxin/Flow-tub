@@ -9,7 +9,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
- * The shared FLOW-SYNC/1 golden vectors (addendum §11), mirrored in
+ * The shared flowtube-sync/1 golden vectors (addendum §11), mirrored in
  * `notes/sync/fixtures/golden_vectors.json`. Any drift in Android's HKDF, SAS, AES-GCM byte layout,
  * or canonical-JSON key ordering fails here; the desktop (Rust) asserts the **same** fixture, so the
  * union is the cross-platform anti-drift gate. Update only with a protocol version bump.
@@ -22,13 +22,13 @@ class SyncGoldenVectorsTest {
     @Test
     fun directional_keys_match_golden() {
         val keys = SyncCrypto.deriveKeys(master, sid)
-        assertEquals("221ee0e415029675477ff6f034cd21c7b097a1979be22a11b6e4e8ec9fe09f0c", SyncBytes.toHex(keys.hostToClient))
-        assertEquals("39bdede0bb3be1d2c07da377caecf4bb52ce2b8dff02ad1a468de2fcec6331e8", SyncBytes.toHex(keys.clientToHost))
+        assertEquals("2a91f4e35756263e4b75c4ab485dac5603494b5761269719534c62daef387ac6", SyncBytes.toHex(keys.hostToClient))
+        assertEquals("937e55d08128372b68bcc0594b990bd9414bfc0cfd4ae7403afaabb194923ea9", SyncBytes.toHex(keys.clientToHost))
     }
 
     @Test
     fun sas_matches_golden() {
-        assertEquals("996576", SyncCrypto.sas(master, sid))
+        assertEquals("660529", SyncCrypto.sas(master, sid))
     }
 
     @Test
@@ -36,10 +36,10 @@ class SyncGoldenVectorsTest {
         val keys = SyncCrypto.deriveKeys(master, sid)
         val nonce = SyncBytes.fromHex("0102030405060708090a0b0c")
         val aad = SyncBytes.fromHex("01a0a1a2a3a4a5a6a7a8a9aaabacadaeaf100000000000000003")
-        val ct = SyncCrypto.seal(keys.hostToClient, nonce, "flow-sync golden".toByteArray(Charsets.UTF_8), aad)
-        assertEquals("7b3de5b1fbf326894fcc98a9836edaa15f1164b1fada823ba82f4e0195352944", SyncBytes.toHex(ct))
+        val ct = SyncCrypto.seal(keys.hostToClient, nonce, "flowtube-sync golden".toByteArray(Charsets.UTF_8), aad)
+        assertEquals("42620428485432cf9ea8802b3daee4fbc5cd8c87554a8208eaba76738623018ea719d618", SyncBytes.toHex(ct))
         // And it must open back to the plaintext (interop both directions).
-        assertEquals("flow-sync golden", String(SyncCrypto.open(keys.hostToClient, nonce, ct, aad), Charsets.UTF_8))
+        assertEquals("flowtube-sync golden", String(SyncCrypto.open(keys.hostToClient, nonce, ct, aad), Charsets.UTF_8))
     }
 
     @Test

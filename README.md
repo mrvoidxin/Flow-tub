@@ -114,15 +114,15 @@ Flow Tube gives you both. A recommendation engine learns what you like by analys
 
 ## Download
 
-Every release ships three APKs. Pick the one that matches your device — the app is identical in all three.
+Every release ships one universal APK. It contains both 32-bit and 64-bit ARM code, so it installs
+on every supported device.
 
-| Your device | APK | Size |
+| APK | Size | Devices |
 | :--- | :--- | :--- |
-| Most phones and tablets (64-bit ARM) | `FlowTube-1.0.0-arm64-v8a.apk` | ~21 MB |
-| Older 32-bit phones | `FlowTube-1.0.0-armeabi-v7a.apk` | ~20 MB |
-| Any device (works everywhere) | `FlowTube-1.0.0-universal.apk` | ~23 MB |
+| `FlowTube-1.0.0-universal.apk` | ~23 MB | Every supported phone and tablet |
 
-- **Not sure?** Take `FlowTube-1.0.0-arm64-v8a.apk` — it works on almost every phone made since 2016. The universal APK works on all of them.
+Grab it from the [latest release](https://github.com/mrvoidxin/Flow-tub/releases/latest), or let the
+app update itself: it checks for a new release and installs it after you confirm.
 
 ### Requirements
 
@@ -130,7 +130,11 @@ Every release ships three APKs. Pick the one that matches your device — the ap
 
 ### Verify your download
 
-Each APK is signed. Check the certificate fingerprint with a tool like [AppVerifier](https://github.com/soupslurpr/AppVerifier) to confirm the build has not been tampered with.
+Each release publishes a `checksums.txt` next to the APK. Compare it with the file you downloaded:
+
+```bash
+sha256sum -c checksums.txt
+```
 
 ---
 
@@ -145,13 +149,13 @@ cd Flow-tub
 # Debug build
 ./gradlew :app:assembleGithubDebug
 
-# Release build — three APKs (universal, arm64-v8a, armeabi-v7a)
+# Release build — the single universal APK
 ./gradlew :app:assembleGithubRelease
 ```
 
-Output lands in `app/build/outputs/apk/github/`.
+Output lands in `app/build/outputs/apk/github/release/app-github-universal-release.apk`.
 
-Two product flavours exist: `github` (default, in-app updater enabled) and `foss` (no updater). Always use flavour-prefixed tasks, e.g. `assembleGithubDebug`, never bare `assembleDebug`.
+One product flavour exists: `github` (in-app updater enabled). Always use flavour-prefixed tasks, e.g. `assembleGithubDebug`, never bare `assembleDebug`.
 
 ---
 

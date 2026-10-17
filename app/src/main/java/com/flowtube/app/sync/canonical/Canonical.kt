@@ -11,7 +11,7 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.JsonElement
 
 /**
- * Platform-neutral canonical records exchanged over FLOW-SYNC/1.
+ * Platform-neutral canonical records exchanged over FLOWTUBE-SYNC/1.
  *
  * Conventions: epoch **milliseconds** for all times; `progress` is a 0..1 fraction;
  * `durationSeconds` is integer seconds; deletions are **tombstones** (`deleted=true`), never

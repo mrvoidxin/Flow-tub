@@ -5,9 +5,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Injectable access to Discord Rich Presence. Each flavor ships its own [DiscordPresenceRuntime] —
- * the real one in github, an always-unavailable stub in foss — and this adapter lets settings take
- * it as a dependency instead of reaching the object directly.
+ * Injectable access to Discord Rich Presence. The shipping build wires the real
+ * [DiscordPresenceRuntime]; this adapter lets settings take it as a dependency instead of reaching
+ * the object directly.
  */
 @Singleton
 class DiscordPresenceController
