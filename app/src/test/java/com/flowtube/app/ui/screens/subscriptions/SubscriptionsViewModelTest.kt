@@ -361,8 +361,9 @@ class SubscriptionsViewModelTest {
         /**
          * The ViewModel launches on [com.flowtube.app.utils.PerformanceDispatcher] rather than
          * on an injected dispatcher, so the test scheduler cannot join those coroutines. Verify
-         * with a timeout instead of racing them.
+         * with a timeout instead of racing them. The timeout only guards against a hang; it is
+         * not a latency assertion, so keep it generous enough for a loaded CI runner.
          */
-        const val VERIFY_TIMEOUT_MS = 2_000L
+        const val VERIFY_TIMEOUT_MS = 10_000L
     }
 }
