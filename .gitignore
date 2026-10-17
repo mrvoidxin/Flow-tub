@@ -49,3 +49,6 @@ Flow-desktop/
 
 # macOS Finder metadata
 .DS_Store
+
+# Locally built release APKs (CI publishes the real ones)
+dist/
