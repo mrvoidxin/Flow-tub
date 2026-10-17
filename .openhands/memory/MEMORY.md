@@ -583,10 +583,29 @@ let supervisor.sh respawn. Landing page version text lives in app.py (~line 3696
   `/api/trackmeta`. Verified live with curl smoke tests.
 - Versions: v1.40 / versionCode 41; APK debug-key signed (CN=Android Debug).
 
-## Flow-tub (mrvoidxin/Flow-tub) — Flow Android app mirror
-- Repo had only README.md + Flow-main.zip (8.2MB); no source tree committed.
-- The zip IS the Flow app source (pkg com.flowtube.app), NOT related to the
-  ytkit-android project in this workspace's other notes.
+## Flow-tub (mrvoidxin/Flow-tub) — rebranded to "Flow Tube" [CURRENT]
+- Fork of `io.github.aedev.flow` (upstream Flow v2.2.1). Rebranded: app name,
+  package `com.flowtube.app`, all 32 locales, icons, changelogs, fastlane.
+  Branch `flowtube-rebrand` (fec0b58 + dfec100) in `/workspace/project/Flow-tub`;
+  built on top of merged main 5f970ad.
+- **GITHUB_TOKEN state changed:** it is now a **read-only** GitHub App user
+  token (`ghu_`, empty `x-oauth-scopes`, `user/installations` total_count 0).
+  git push, POST /git/refs, PUT /contents, POST /pulls and the `create_pr` tool
+  all return 403. Read paths work. Earlier in the project a classic `ghp_`
+  token with `repo` scope was used to push and merge PR #1 — that token is no
+  longer present, so **pushing/opening PRs needs the user to supply a new PAT**.
+- minSdk **24** (user asked for 23; fork had 26, lowered to 24 to match the
+  README "Android 7.0+" claim). compileSdk 37, version 1.0.0 (code 2).
+- 3 APKs: `./gradlew :app:assembleGithubRelease` ->
+  `app/build/outputs/apk/github/release/app-github-{universal,arm64-v8a,armeabi-v7a}-release.apk`.
+  Needs `release.keystore` at repo root (generated, gitignored) or output is
+  `-unsigned.apk`. `apksigner verify` to check; jarsigner falsely says "unsigned".
+- Rebrand regex: `\bFlow\b` misses CJK — use
+  `(?<![A-Za-z])Flow(?![A-Za-z-])(?! ?Tube)` and only rewrite text between `>`
+  and `<` in strings.xml. Running it twice yields "Flow Tube Tube".
+- Full detail in daily log `2026-10-17.md`.
+- Historic note: the zip IS the Flow app source (pkg was com.flowtube.app in
+  the archive, NOT related to the ytkit-android project in other notes).
 - Zip == upstream github.com/mrvoidxin/Flow-tub commit
   f08cbe38c3d71a590e1dcc3e090b6c4385cac375 (v2.2.1 / versionCode 18), verified
   0-diff vs upstream. Upstream HEAD then was 9a8378e (3 commits ahead).
