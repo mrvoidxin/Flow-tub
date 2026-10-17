@@ -56,9 +56,9 @@ jobs:
           git status --porcelain -- app/src/main/java/org/tartarus/snowball
           test -z "$(git status --porcelain -- app/src/main/java/org/tartarus/snowball)"
 
-      # Upstream gates on formatting via Spotless' ratchet, which needs the
-      # upstream commit 52c4928e... that a mirror does not have. Keep the check
-      # informative (it still runs) but do not let it block the mirror's CI.
+      # Spotless' ratchet needs a recorded base commit to diff against, and there
+      # is none here, so the check stays informative (it still runs) and does not
+      # block CI.
       - name: Check Kotlin formatting
         continue-on-error: true
         run: >
@@ -75,7 +75,7 @@ jobs:
             echo "signed=true" >> "$GITHUB_OUTPUT"
             echo "Release keystore decoded."
           else
-            # This mirror has no signing secrets, so fall back to an unsigned
+            # No signing secret is configured, so fall back to an unsigned
             # CI build instead of failing. app/build.gradle.kts sets
             # signingConfig = null when no keystore is present.
             echo "signed=false" >> "$GITHUB_OUTPUT"
@@ -112,7 +112,7 @@ jobs:
 
       # Guards the update path: a wrong or missing key here is unrecoverable for
       # installed users, so fail the build rather than publish. Skipped when no
-      # keystore was available, e.g. on fork PRs.
+      # keystore was configured.
       - name: Verify release signing certificate
         if: ${{ steps.keystore.outputs.signed == 'true' && env.EXPECTED_SIGNER_SHA256 != '' }}
         run: |

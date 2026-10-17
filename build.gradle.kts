@@ -21,9 +21,8 @@ plugins {
 }
 
 spotless {
-    // This mirror has no upstream history, so the inherited ratchet commit
-    // (52c4928e...) is absent and GitRatchet fails with MissingObjectException.
-    // Check the whole tree instead.
+    // Check the whole tree rather than a ratchet: the ratchet needs a recorded
+    // base commit, and there is none to point at here.
     lineEndings = LineEnding.UNIX
 
     val ktlintConfig =
