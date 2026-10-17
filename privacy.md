@@ -177,17 +177,14 @@ signature-level permission that the library defines under the app's own package 
 `ContextCompat.registerReceiver` can keep dynamically registered receivers non-exported. It grants
 nothing to other apps and takes no capability from the system.
 
-`REQUEST_INSTALL_PACKAGES` comes from `com.github.supersu-man:apkupdater-library` and is present in
-the `github` flavor only, for the in-app updater that offers to install a new release APK. The
-`foss` flavor does not include the updater library and does not carry this permission.
+`REQUEST_INSTALL_PACKAGES` comes from `com.github.supersu-man:apkupdater-library` and powers the
+in-app updater that offers to install a new release APK. Flow Tube ships a single flavor, so this
+permission is always present.
 
 ## Build flavors
 
-Flow Tube ships two flavors. The permission difference between them is the one above.
-
-- `foss`: no in-app updater, no `REQUEST_INSTALL_PACKAGES`. This is the build intended for F-Droid
-  style distribution.
-- `github`: adds the in-app updater and the optional Discord presence integration.
+Flow Tube ships one flavor, `github`: it carries the in-app updater, which checks
+`/releases/latest` and installs the new universal APK after the user confirms.
 
 ## Network endpoints
 

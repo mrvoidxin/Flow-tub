@@ -8,8 +8,8 @@ import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
 /**
- * The launcher aliases live in three places: the manifest, [AppIcons] and the nightly icon overlay.
- * A drift between them can leave the app with no launcher entry after a restore or an update.
+ * The launcher aliases live in two places: the manifest and [AppIcons]. A drift between them can
+ * leave the app with no launcher entry after a restore or an update.
  */
 class LauncherAliasManifestTest {
     private val androidNs = "http://schemas.android.com/apk/res/android"
@@ -38,11 +38,11 @@ class LauncherAliasManifestTest {
     }
 
     @Test
-    fun `every alias icon has a nightly version`() {
-        val nightlyMipmaps = File("src/nightly/res/mipmap-anydpi-v26")
+    fun `every alias icon exists in the main mipmaps`() {
+        val mainMipmaps = File("src/main/res/mipmap-anydpi-v26")
         val icons = aliases.flatMap { listOf(it.android("icon"), it.android("roundIcon")) }
 
-        val missing = icons.map { it.removePrefix("@mipmap/") }.filterNot { File(nightlyMipmaps, "$it.xml").isFile }
+        val missing = icons.map { it.removePrefix("@mipmap/") }.filterNot { File(mainMipmaps, "$it.xml").isFile }
 
         assertThat(missing).isEmpty()
     }

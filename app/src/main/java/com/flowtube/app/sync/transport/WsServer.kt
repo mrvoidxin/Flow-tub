@@ -65,7 +65,7 @@ class WsServer {
     }
 
     private object QrPath {
-        const val PATH = "/flow-sync"
+        const val PATH = "/flowtube-sync"
     }
 
     private companion object {

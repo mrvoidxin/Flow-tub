@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 
-/** FLOW-SYNC/1 frame type bytes */
+/** FLOWTUBE-SYNC/1 frame type bytes */
 object FrameType {
     const val HELLO: Byte = 0x01
     const val HELLO_ACK: Byte = 0x02

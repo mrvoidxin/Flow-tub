@@ -36,9 +36,9 @@ class SettingsIndexTest {
     }
 
     @Test
-    fun `foss builds list no github-only entries`() {
-        val foss = all.filter { it.availability.isAvailable(githubFeatures = false, sdk = 36) }
-        assertFalse(foss.any { it.availability == SettingAvailability.GithubOnly })
+    fun `a build without github features lists no github-only entries`() {
+        val plain = all.filter { it.availability.isAvailable(githubFeatures = false, sdk = 36) }
+        assertFalse(plain.any { it.availability == SettingAvailability.GithubOnly })
     }
 
     @Test

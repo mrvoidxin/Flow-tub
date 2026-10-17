@@ -7,8 +7,8 @@ receive backported patches.
 
 | Version | Supported |
 | ------- | --------- |
-| 2.2.x   | ✅ |
-| < 2.2.0 | ❌ |
+| 1.0.x   | ✅ |
+| < 1.0.0 | ❌ |
 
 Always update to the newest release before reporting a security issue.
 
@@ -18,7 +18,6 @@ Always update to the newest release before reporting a security issue.
 
 Report privately through
 [GitHub Security Advisories](https://github.com/mrvoidxin/Flow-tub/security/advisories/new).
-If you cannot use that form, email <flowtube.support@gmail.com>.
 
 Please include:
 
@@ -35,24 +34,14 @@ Please do not disclose the issue publicly until a fix has shipped.
 
 ## Verifying release APKs
 
-Official Flow Tube builds are signed with a single release key. Any APK that does
-not match the fingerprint below is not an official build, regardless of where
-it was downloaded.
-
-```
-SHA-256: 43:22:29:4E:D4:CA:A2:D4:29:41:40:09:58:18:08:0F:FE:8A:CC:1F:BE:3C:DC:76:10:7D:F4:5C:52:86:BE:40
-```
-
-Verify a downloaded APK with the Android SDK build tools:
+Every release publishes a `checksums.txt` next to the APK. Compare it with the
+file you downloaded:
 
 ```bash
-apksigner verify --print-certs flow-foss.apk
+sha256sum -c checksums.txt
 ```
 
-The reported `Signer #1 certificate SHA-256 digest` must equal the fingerprint
-above (lower case, without colons).
-
-Official distribution channels are the
-[GitHub Releases page](https://github.com/mrvoidxin/Flow-tub/releases) and
-[IzzyOnDroid](https://apt.izzysoft.de/packages/com.flowtube.app). Builds
-obtained anywhere else are unverified.
+Flow Tube ships one universal APK per release. Any file that is not named
+`FlowTube-<version>-universal.apk`, or that fails the checksum, is not an
+official build. Official distribution is the
+[GitHub Releases page](https://github.com/mrvoidxin/Flow-tub/releases).

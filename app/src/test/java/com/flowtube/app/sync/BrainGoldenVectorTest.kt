@@ -22,7 +22,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * The brain half of the shared FLOW-SYNC/1 anti-drift gate.
+ * The brain half of the shared FLOWTUBE-SYNC/1 anti-drift gate.
  *
  * [android_decodes_the_desktop_brain_fixture] reads the desktop's own golden fixture
  * (`src-tauri/tests/fixtures/sync/flow_neuro_brain.json`, mirrored verbatim into this module's test

@@ -8,7 +8,7 @@ import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
 /**
- * The FLOW-SYNC/1 wire envelope. Each WebSocket binary message is:
+ * The FLOWTUBE-SYNC/1 wire envelope. Each WebSocket binary message is:
  *
  * ```
  * ver:u8 │ frame_type:u8 │ seq:u64 BE │ nonce:12 │ ciphertext ∥ tag(16)

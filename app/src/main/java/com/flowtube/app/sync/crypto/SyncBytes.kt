@@ -3,7 +3,7 @@ package com.flowtube.app.sync.crypto
 import java.io.ByteArrayOutputStream
 
 /**
- * Byte-encoding helpers for FLOW-SYNC/1. Hand-rolled (no `android.util.Base64`, no
+ * Byte-encoding helpers for FLOWTUBE-SYNC/1. Hand-rolled (no `android.util.Base64`, no
  * `java.util.Base64`) so they are byte-exact, portable across all minSdk-21 devices, and run in
  * plain JVM unit tests without Robolectric.
  *

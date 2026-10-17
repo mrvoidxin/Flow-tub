@@ -2,7 +2,7 @@
 
 Flow Tube (`com.flowtube.app`) is an Android music/video app written in Kotlin with Jetpack Compose, Hilt, and Media3/ExoPlayer. It plays YouTube content via a native InnerTube client with a NewPipe-based fallback extraction path, supports local media playback, offline downloads, casting, lyrics, a device-to-device sync feature, and an on-device recommendation engine (FlowTubeEngine). It follows Material 3 design guidelines closely.
 
-Product flavors: `github` (default, in-app updater enabled) and `foss` (no updater). Always use flavor-prefixed Gradle tasks — e.g. `assembleGithubDebug`, `compileFossDebugKotlin` — never bare `assembleDebug`/`compileDebugKotlin`.
+One product flavor: `github` (in-app updater enabled). Always use the flavor-prefixed Gradle tasks — e.g. `assembleGithubDebug`, `testGithubDebugUnitTest` — never the bare `assembleDebug`/`compileDebugKotlin`.
 
 ## graphify
 
@@ -293,8 +293,7 @@ and playback behavior.
     Android entry points change, also add or run an integration test that constructs the affected
     path; unit tests that instantiate the class directly do not validate Hilt wiring.
 13. Minimum validation for a non-player DI migration is `ktlintCheck`,
-    `:app:testGithubDebugUnitTest`, `:app:compileGithubDebugKotlin`, and
-    `:app:compileFossDebugKotlin`, followed by the relevant flavor build. Exercise the affected UI
+    `:app:testGithubDebugUnitTest`, `:app:compileGithubDebugKotlin`, followed by the flavor build. Exercise the affected UI
     or background flow on a device/emulator, including configuration change and an error path. A
     player/startup migration additionally requires the player golden paths above and relevant
     startup/playback measurements. Do not describe a migration as safe, risk-free, or behaviorally
@@ -506,8 +505,8 @@ revision must pass the configured ktlint rules.
 The app ships a generated baseline profile at `app/src/main/generated/baselineProfiles/`
 (`baseline-prof.txt` drives ART's AOT compilation; `startup-prof.txt` drives dex layout). It is
 generated on a real device by the `:benchmark` module, and the generated files **are committed**.
-`baselineProfile { mergeIntoMain = true }` makes every shipped variant (github, foss, nightly) read
-the same files, so foss and nightly startup match github release.
+`baselineProfile { mergeIntoMain = true }` makes the shipped variant (github) read
+the same files, so debug and release startup match.
 
 ```bash
 ./gradlew :app:generateGithubReleaseBaselineProfile

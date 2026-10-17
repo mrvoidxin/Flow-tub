@@ -3,7 +3,7 @@ package com.flowtube.app.data.local.migrations
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-// Device Sync (FLOW-SYNC/1): stable cross-device playlist identity.
+// Device Sync (FLOWTUBE-SYNC/1): stable cross-device playlist identity.
 class Migration20To21 : Migration(20, 21) {
     override fun migrate(db: SupportSQLiteDatabase) {
         db.execSQL("ALTER TABLE playlists ADD COLUMN syncId TEXT")
