@@ -636,3 +636,20 @@ let supervisor.sh respawn. Landing page version text lives in app.py (~line 3696
   (2) the keystore decode steps hard-fail on missing secrets -> relaxed to
   unsigned fallback. A new secret-free `.github/workflows/build-apk.yml` builds
   `:app:assembleGithubDebug` and uploads APKs; all three workflows are green.
+
+## Flow-tub rebrand (2026-10-17) [CURRENT]
+- Repo `/workspace/project/Flow-tub` = the "Flow" Android app (upstream
+  `io.github.aedev.flow`), rebranded to **Flow Tube** (`com.flowtube.app`).
+  Branch `flowtube-rebrand`, **PR #7** open (green: Build APK, CodeQL, Android
+  CI/CD). Push works only with a classic PAT (`repo` + `workflow` scopes); the
+  session `GITHUB_TOKEN` is read-only.
+- **Never lower `minSdk` below 26.** The vendored Snowball stemmers
+  (`org/tartarus/snowball/`) call `MethodHandle.invokeExact`; D8 rejects that
+  below API 26. Release R8 only warns (calls get inlined, class vanishes from
+  the DEX) so release builds pass, but `assembleGithubDebug` fails hard and
+  CodeQL's `Build for extraction` step goes red. Keep README/docs saying
+  Android 8.0+.
+- Landing page lives in `docs/index.html`, deployed by
+  `.github/workflows/pages.yml` (push to `main` touching `docs/**`). GitHub Pages
+  had to be enabled once via
+  `POST /repos/:o/:r/pages -d '{"build_type":"workflow"}'`.
